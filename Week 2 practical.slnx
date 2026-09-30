@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="Week 2 practical/Week 2 practical.csproj" />
+  <Project Path="WK2-Practical-TaskCipher/WK2-Practical-TaskCipher.csproj" Id="9d1cba2e-4ec5-4f84-8671-87a3ef417740" />
   <Project Path="Wk2Practical-Task5/Wk2Practical-Task5.csproj" Id="0483adce-d86c-45c8-935e-8c4d4fc76144" />
 </Solution>
