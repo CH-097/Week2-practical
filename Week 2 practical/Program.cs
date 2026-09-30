@@ -1,9 +1,6 @@
 ﻿/*
  * Week 2 Practical
- * Task 1: Create a PrintMenu() method
- * Task 2: Create InputOptional() method
- * Task 3: Create GetMessage() method
- * Task 4: Putting it all together
+ * 
 */
 
 
@@ -39,7 +36,6 @@ static int InputOption()
     try
     {
         //read option value from user
-        //PrintMenu();
         x = Convert.ToInt32((Console.ReadLine()));
         
 
@@ -51,21 +47,63 @@ static int InputOption()
 
     }
     return x;
+} 
+
+// Task 3
+static string GetMessage(int option)
+{
+    //determines which language is required using switch, thenr eturn correct hello phrase
+    // depending in the language selected by user
+    string message = "";
+    switch (option)
+    {
+        case 1:
+            message = ("Bonjour!");
+            break;
+        case 2:
+            message = ("Hola!");
+            break;
+        case 3:
+            message =("Hallo!");
+            break;
+        case 4:
+            message = ("Ciao!");
+            break;
+    }
+    return message;
+} 
 
 
 
-}
+
 
 //main
-
 Main();
 
 static void Main()
 {
+    //PrintMenu();
+    //int option = InputOption();
+    //Console.WriteLine(option);
+    // display the message in the langauge selected by user
+    //Console.WriteLine(GetMessage(option));
 
-    PrintMenu();
-    int option = InputOption();
-    Console.WriteLine(option);
- 
+
+
+    //Task 4, do-while loop, iterates until user enters 0 to exit application
+    int option;
+    do
+    {
+        PrintMenu();
+        option = InputOption();
+        Console.WriteLine(option);
+        //display the message in the langauge selected by user
+        Console.WriteLine(GetMessage(option));
+
+    } while (option != 0);
+
+
+
+
 }
 
