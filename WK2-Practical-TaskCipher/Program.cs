@@ -12,21 +12,28 @@
 static string Encrypt(string str, int K)
 {
     string alphabets = "abcdefghijklmnopqrstuvwxyz";
+    string alphabetsUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; // creates a string of uppercase alphabets
     string newStr = ""; // creates an empty string to store the new encrypted string
 
-
-    //goes through each character in in str and replaces each character with one that K spaces after.
     for (int i = 0; i < str.Length; i++)
-       
     {
-        //
         char current = str[i]; // means the current character in the string str
         int position = alphabets.IndexOf(current); // finds the index of the current character in the alphabet string
 
-        int newPosition = (position + K) % 26; // calculates the new position of the character after K rotations, using modulo to wrap around the alphabet
-        newStr += alphabets[newPosition]; // adds the new character to the newStr string
+        int positionUpper = alphabetsUpper.IndexOf(current); // finds the index of the current character in the uppercase alphabet string
 
-
+        if (position != -1)
+        {
+            int newPosition = (position + K) % 26; // calculates the new position of the character after K rotations, using modulo to wrap around the alphabet
+                                                   // % 26 means that if the new position is greater than 25, it will wrap around to the beginning of the alphabet
+            newStr += alphabets[newPosition]; // adds the new character to the newStr string
+        } else if (positionUpper != -1) {
+            int newPositionUpper = (positionUpper + K) % 26; // calculates the new position of the character after K rotations, using modulo to wrap around the alphabet
+            newStr += alphabetsUpper[newPositionUpper]; // adds the new character to the newStr string
+        } else
+        {
+            newStr += current; // if the character is not a letter, it is added to the newStr string as is
+        }
     }
 
     return newStr;
