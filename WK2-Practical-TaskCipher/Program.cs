@@ -22,22 +22,30 @@ static string Encrypt(string str, int K)
 
         int positionUpper = alphabetsUpper.IndexOf(current); // finds the index of the current character in the uppercase alphabet string
 
-        if (position != -1)
+        if (position != -1) // if the character is found in the lowercase alphabet string, otherwirse returns -1
         {
             int newPosition = (position + K) % 26; // calculates the new position of the character after K rotations, using modulo to wrap around the alphabet
                                                    // % 26 means that if the new position is greater than 25, it will wrap around to the beginning of the alphabet
             newStr += alphabets[newPosition]; // adds the new character to the newStr string
+
         } else if (positionUpper != -1) {
             int newPositionUpper = (positionUpper + K) % 26; // calculates the new position of the character after K rotations, using modulo to wrap around the alphabet
             newStr += alphabetsUpper[newPositionUpper]; // adds the new character to the newStr string
+
         } else
         {
             newStr += current; // if the character is not a letter, it is added to the newStr string as is
         }
     }
-
     return newStr;
 }
+
+static string Decrpt(string str, int K)
+{
+    // reverse encryption.
+
+}
+
 
 
 //main
@@ -45,17 +53,49 @@ Main();
 
 static void Main()
 {
+    Console.WriteLine("Main Menu\n" +
+        "Select an option:\n" +
+        "1 - encrypt text\n" +
+        "2 - decrypt text\n" +
+        "0 - End");
 
-    Console.WriteLine("Enter a string: ");
-    string str = Console.ReadLine();
+    int userChoice = Convert.ToInt32((Console.ReadLine()));
 
-    Console.WriteLine("Enter number of rotations: ");
-    int K = Convert.ToInt32(Console.ReadLine());
 
-    string encrypted = Encrypt(str, K);
+    if (userChoice == 1)
+    {
+        Console.WriteLine("Enter a string: ");
+        string str = Console.ReadLine();
 
-    Console.WriteLine($"The sentence you inputtes is: {str}");
-    Console.WriteLine($"The encrypted sentence is now: {encrypted}");
+        Console.WriteLine("Enter number of rotations: ");
+        int K = Convert.ToInt32(Console.ReadLine());
+
+        string encrypted = Encrypt(str, K);
+
+        Console.WriteLine($"The sentence you inputted is: {str}");
+        Console.WriteLine($"The encrypted sentence is now: {encrypted}");
+
+    } else if (userChoice == 2)
+    {
+        Console.WriteLine("Enter a string you wish to decrypt: ");
+        string str = Console.ReadLine();
+
+        Console.WriteLine("Enter number of rotations: ");
+        int K = Convert.ToInt32(Console.ReadLine());
+
+        string encrypted = Encrypt(str, K);
+
+        Console.WriteLine($"The sentence you inputted is: {str}");
+        Console.WriteLine($"The decrypted sentence is now: {encrypted}");
+    } else
+    {
+        Console.WriteLine("Goodbye!");
+    }
+  
+
+
+
+
 
 
 
