@@ -91,43 +91,53 @@ static void Main()
 
     int userChoice = Convert.ToInt32((Console.ReadLine()));
 
-
-    if (userChoice == 1)
+    try
     {
-        Console.WriteLine("Enter a string: ");
-        string str = Console.ReadLine();
+        //
+        if (userChoice == 1)
+        {
+            Console.WriteLine("Enter a string: ");
+            string str = Console.ReadLine();
 
-        Console.WriteLine("Enter number of rotations: ");
-        int K = Convert.ToInt32(Console.ReadLine());
 
-        string encrypted = Encrypt(str, K);
+            Console.WriteLine("Enter number of rotations: ");
+            int K = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine($"The sentence you inputted is: {str}");
-        Console.WriteLine($"The encrypted sentence is now: {encrypted}");
 
-    } else if (userChoice == 2)
-    {
-        Console.WriteLine("Enter a string you wish to decrypt: ");
-        string str = Console.ReadLine();
+            string encrypted = Encrypt(str, K);
 
-        Console.WriteLine("Enter number of rotations: ");
-        int K = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"The sentence you inputted is: {str}");
+            Console.WriteLine($"The encrypted sentence is now: {encrypted}");
 
-        string decrypted = Decrpt(str, K);
+        }
+        else if (userChoice == 2)
+        {
+            Console.WriteLine("Enter a string you wish to decrypt: ");
+            string str = Console.ReadLine();
 
-        Console.WriteLine($"The sentence you inputted is: {str}");
-        Console.WriteLine($"The decrypted sentence is now: {decrypted}");
-    } else
-    {
-        Console.WriteLine("Goodbye!");
+            Console.WriteLine("Enter number of rotations: ");
+            int K = Convert.ToInt32(Console.ReadLine());
+
+            string decrypted = Decrpt(str, K);
+
+            Console.WriteLine($"The sentence you inputted is: {str}");
+            Console.WriteLine($"The decrypted sentence is now: {decrypted}");
+        }
+        else if (userChoice == 0)
+        {
+            Environment.Exit(0);  // immediate exit
+        }
+        else
+        {
+            Console.WriteLine("Invalid choice. Please try again");
+        }
     }
+
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error. {ex.Message}");
+    }
+
   
-
-
-
-
-
-
-
 }
 
